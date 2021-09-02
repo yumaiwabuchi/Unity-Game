@@ -1079,7 +1079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055934680166840189, guid: 7d37c7056260c5541a091926fa8ad293, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.9
+      value: 7.84
       objectReference: {fileID: 0}
     - target: {fileID: 7055934680166840189, guid: 7d37c7056260c5541a091926fa8ad293, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1108,6 +1108,14 @@ PrefabInstance:
     - target: {fileID: 7055934680166840189, guid: 7d37c7056260c5541a091926fa8ad293, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609820064131909157, guid: 7d37c7056260c5541a091926fa8ad293, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609820064131909157, guid: 7d37c7056260c5541a091926fa8ad293, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 7683254874125135303, guid: 7d37c7056260c5541a091926fa8ad293, type: 3}
       propertyPath: m_Name
@@ -1263,9 +1271,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_speed: 15
-  limit_right_speed: 50
-  limit_left_speed: 20
-  limit_speed_z: 10
+  player_max_speed: 10
+  player_x_speed: 30
+  player_hit_heal_seconds: 2
+  player_hit_heal_speed: 1000
+  player_side_add_speed: 2500
   physicMaterial: {fileID: 13400000, guid: f8b33243036de69478639b21203e3c5c, type: 2}
   player: {fileID: 1280259334}
 --- !u!65 &1280259336
