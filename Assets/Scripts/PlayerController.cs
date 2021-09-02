@@ -10,13 +10,19 @@ public class PlayerController : MonoBehaviour
     float player_speed = 1.0f;
 
     [SerializeField]
-    float limit_right_speed = 10.0f;
+    float player_max_speed = 10.0f;
 
     [SerializeField]
-    float limit_left_speed = -10.0f;
+    float player_x_speed = 30.0f;
 
     [SerializeField]
-    float limit_speed_z = 10.0f;
+    float player_hit_heal_seconds = 2.0f;
+
+    [SerializeField]
+    float player_hit_heal_speed = 1000.0f;
+
+    [SerializeField]
+    float player_side_add_speed = 2500.0f;
 
     [SerializeField]
     PhysicMaterial physicMaterial;
@@ -43,20 +49,20 @@ public class PlayerController : MonoBehaviour
         Vector3 force = gameObject.transform.rotation * new Vector3(0.0f, 0.0f, 5.0f);
         r_body.AddForce(force);
 
-        if(rightFlag)
+        if (rightFlag)
         {
-            r_body.AddForce(30.0f, 0.0f, 0.0f);
+            r_body.AddForce(player_x_speed, 0.0f, 0.0f);
             rightFlag = false;
         }
         if (leftFlag)
         {
-            r_body.AddForce(-30.0f, 0.0f, 0.0f);
+            r_body.AddForce(-player_x_speed, 0.0f, 0.0f);
             leftFlag = false;
         }
 
-        if(r_body.velocity.magnitude > limit_right_speed)
+        if(r_body.velocity.magnitude > player_max_speed)
         {
-            r_body.velocity = r_body.velocity.normalized * limit_right_speed;
+            r_body.velocity = r_body.velocity.normalized * player_max_speed;
         }
 
         //if (r_body.velocity.magnitude < limit_left_speed)
@@ -98,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Front"))
         {
-            Invoke("AddPower", 2.0f);
+            Invoke("AddPower", player_hit_heal_seconds);
         }
 
         if (collision.gameObject.CompareTag("Side"))
@@ -116,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     void AddPower()
     {
-        r_body.AddForce(0.0f, 0.0f, 1000,0f);
+        r_body.AddForce(0.0f, 0.0f, player_hit_heal_speed);
         maxSpeed = 0.0f;
     }
 
@@ -134,7 +140,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {      
         if (!side_hit_flag)
-        r_body.AddForce(0.0f, 0.0f, 2500.0f * stay_time);
+        r_body.AddForce(0.0f, 0.0f, player_side_add_speed * stay_time);
 
         side_hit_flag = false;
     }
