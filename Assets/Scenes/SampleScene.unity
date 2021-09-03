@@ -5890,7 +5890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_speed: 15
-  player_max_speed: 10
+  player_max_speed: 50
   player_x_speed: 30
   player_hit_heal_seconds: 2
   player_hit_heal_speed: 1000
