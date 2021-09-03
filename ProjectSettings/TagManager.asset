@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Front
   - Side
+  - Side Cube
+  - RIght Side
+  - Left Side
+  - Right Side
   layers:
   - Default
   - TransparentFX

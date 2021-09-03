@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PhysicMaterial physicMaterial;
 
+    [SerializeField]
+    float player_inertia = 0.7f;
+
     public GameObject player;
 
     Rigidbody r_body;
@@ -35,32 +38,55 @@ public class PlayerController : MonoBehaviour
     float maxSpeed;
     float stay_time;
     bool side_hit_flag;
+    bool right_side_flg;
+    bool left_side_flg;
 
     void Start()
     {
         leftFlag  = false;
         rightFlag = false;
         side_hit_flag = false;
+        right_side_flg = false;
+        left_side_flg = false;
     }
 
     private void FixedUpdate()
     {
         r_body = GetComponent<Rigidbody>();
         Vector3 force = gameObject.transform.rotation * new Vector3(0.0f, 0.0f, 5.0f);
-        r_body.AddForce(force);
+//        r_body.AddForce(force);
 
         if (rightFlag)
         {
-            r_body.AddForce(player_x_speed, 0.0f, 0.0f);
+            if (r_body.velocity.x < 0.0f)
+            {
+                var velocity = r_body.velocity;
+                velocity.x *= player_inertia;
+                r_body.velocity = velocity;
+            }
+
+            //            r_body.AddForce(player_x_speed, 0.0f, 0.0f);
+            force += new Vector3(player_x_speed, 0.0f, 0.0f);
             rightFlag = false;
         }
+
         if (leftFlag)
         {
-            r_body.AddForce(-player_x_speed, 0.0f, 0.0f);
+            if (r_body.velocity.x > 0.0f)
+            {
+                var velocity = r_body.velocity;
+                velocity.x *= player_inertia;
+                r_body.velocity = velocity;
+            }
+
+            //r_body.AddForce(-player_x_speed, 0.0f, 0.0f);
+            force += new Vector3(-player_x_speed, 0.0f, 0.0f);
             leftFlag = false;
         }
 
-        if(r_body.velocity.magnitude > player_max_speed)
+        
+
+        if (r_body.velocity.magnitude > player_max_speed)
         {
             r_body.velocity = r_body.velocity.normalized * player_max_speed;
         }
@@ -71,6 +97,7 @@ public class PlayerController : MonoBehaviour
         //}
 
         //transform.position += force * Time.deltaTime;
+        r_body.AddForce(force);
     }
 
     // Update is called once per frame
@@ -79,17 +106,24 @@ public class PlayerController : MonoBehaviour
         float d_pad_h = Input.GetAxis("D_Pad_H");
         float l_stick_h = Input.GetAxis("L_Stick_H");
 
-        if (Input.GetKey(KeyCode.D) || d_pad_h > 0 || l_stick_h > 0)
+        if (!right_side_flg)
         {
-            rightFlag = true;
-//            transform.Rotate(0, 50 * Time.deltaTime, 0);
+            if (Input.GetKey(KeyCode.D) || d_pad_h > 0 || l_stick_h > 0)
+            {
+                rightFlag = true;
+                //            transform.Rotate(0, 50 * Time.deltaTime, 0);
+            }
         }
 
-        if (Input.GetKey(KeyCode.A) || d_pad_h < 0 || l_stick_h < 0)
+        if (!left_side_flg)
         {
-            leftFlag = true;
-//            transform.Rotate(0, -50 * Time.deltaTime, 0);
+            if (Input.GetKey(KeyCode.A) || d_pad_h < 0 || l_stick_h < 0)
+            {
+                leftFlag = true;
+                //            transform.Rotate(0, -50 * Time.deltaTime, 0);
+            }
         }
+        
 
         if (r_body.velocity.z >= 20.0f)
             physicMaterial.bounciness = 0.2f;
@@ -111,13 +145,17 @@ public class PlayerController : MonoBehaviour
         {
             side_hit_flag = true;
         }
+
+        
     }
     private void OnCollisionExit(Collision collision)
     {
-        
+
         //if (maxSpeed >= 10.0f)
-//        r_body.AddForce(0.0f, 0.0f, maxSpeed * 50.0f);
-//        maxSpeed = 0.0f;
+        //        r_body.AddForce(0.0f, 0.0f, maxSpeed * 50.0f);
+        //        maxSpeed = 0.0f;
+        
+
     }
 
     void AddPower()
@@ -130,6 +168,16 @@ public class PlayerController : MonoBehaviour
     {
         stay_time = 0.0f;
         side_hit_flag = false;
+
+        if (other.gameObject.CompareTag("Right Side"))
+        {
+            right_side_flg = true;
+        }
+
+        if (other.gameObject.CompareTag("Left Side"))
+        {
+            left_side_flg = true;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -143,6 +191,8 @@ public class PlayerController : MonoBehaviour
         r_body.AddForce(0.0f, 0.0f, player_side_add_speed * stay_time);
 
         side_hit_flag = false;
+        right_side_flg = false;
+        left_side_flg = false;
     }
 
     //private void OnTriggerEnter(Collider other)
