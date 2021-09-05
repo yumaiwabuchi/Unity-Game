@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     float player_hit_heal_speed = 1000.0f;
 
     [SerializeField]
-    float player_side_add_speed = 2500.0f;
+    float dashbord_add_speed = 2500.0f;
 
     [SerializeField]
     PhysicMaterial physicMaterial;
