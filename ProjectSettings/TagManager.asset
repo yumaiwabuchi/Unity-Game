@@ -10,6 +10,7 @@ TagManager:
   - RIght Side
   - Left Side
   - Right Side
+  - Meteo Tag
   layers:
   - Default
   - TransparentFX
@@ -17,9 +18,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - PlayerMoveBox
+  - Meteo
+  - Invincible
   - 
   - 
   - 
