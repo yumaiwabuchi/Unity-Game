@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     float player_speed = 1.0f;
 
     [SerializeField]
+    float player_side_add_speed = 1.0f;
+
+    [SerializeField]
     float player_max_speed = 10.0f;
 
     [SerializeField]
