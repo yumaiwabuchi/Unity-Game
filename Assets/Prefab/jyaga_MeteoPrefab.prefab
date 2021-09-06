@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4433976968837815542}
   - component: {fileID: 3021261668682981051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoSideBox2
   m_TagString: Side
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4433976968837815542
 Transform:
   m_ObjectHideFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3600660547195622256}
   - component: {fileID: 1532739743713325386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411169101367319896}
-  m_Layer: 0
+  - component: {fileID: 8309880070715299776}
+  - component: {fileID: -7406486429139455620}
+  - component: {fileID: 7779518913952311931}
+  m_Layer: 7
   m_Name: jyaga_MeteoPrefab
-  m_TagString: Untagged
+  m_TagString: Meteo Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +126,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 78.1, y: -704.33, z: 558.86}
+--- !u!114 &8309880070715299776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792057162964518882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &-7406486429139455620
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792057162964518882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 9a0012d3f9ce23c4e84da5fe5af3264f, type: 3}
+--- !u!54 &7779518913952311931
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792057162964518882}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 112
+  m_CollisionDetection: 3
 --- !u!1 &3281495610051906830
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,13 +178,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2375386324319383222}
   - component: {fileID: 3251676496096043932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoFrontBox
   m_TagString: Front
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2375386324319383222
 Transform:
   m_ObjectHideFlags: 0
@@ -177,13 +222,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7291153245191881509}
   - component: {fileID: 9043825079773315613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoSideBox
   m_TagString: Side
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7291153245191881509
 Transform:
   m_ObjectHideFlags: 0
@@ -222,8 +267,8 @@ GameObject:
   - component: {fileID: 2010099535280122880}
   - component: {fileID: 3689118508084270410}
   - component: {fileID: 150830583487771102}
-  m_Layer: 0
-  m_Name: default
+  m_Layer: 7
+  m_Name: jyaga_default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 5441592790389068347}
   - component: {fileID: 4420430888699211067}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoFrontBox
   m_TagString: Front
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5441592790389068347
 Transform:
   m_ObjectHideFlags: 0
@@ -55,8 +55,8 @@ GameObject:
   - component: {fileID: 7609820064131909157}
   - component: {fileID: 4705325220827447151}
   - component: {fileID: 8100030121579650043}
-  m_Layer: 0
-  m_Name: default
+  m_Layer: 7
+  m_Name: satu_default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,13 +136,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3132419575195351966}
   - component: {fileID: 2838775094051694118}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoSideBox
   m_TagString: Side
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3132419575195351966
 Transform:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8644946053712990975}
   - component: {fileID: 5553248848564226969}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,13 +224,13 @@ GameObject:
   m_Component:
   - component: {fileID: 9138056738422297158}
   - component: {fileID: 5937200531988167066}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeteoSideBox2
   m_TagString: Side
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9138056738422297158
 Transform:
   m_ObjectHideFlags: 0
@@ -267,9 +267,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7055934680166840189}
-  m_Layer: 0
+  - component: {fileID: 5551952497570539799}
+  - component: {fileID: -9027464249588072956}
+  - component: {fileID: 5392105100504615749}
+  m_Layer: 7
   m_Name: satu_MeteoPrefab
-  m_TagString: Untagged
+  m_TagString: Meteo Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,3 +296,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 157, z: 0}
+--- !u!114 &5551952497570539799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683254874125135303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &-9027464249588072956
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683254874125135303}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 6a7318f7bfc373c4a968a94b6ad18043, type: 3}
+--- !u!54 &5392105100504615749
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683254874125135303}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 112
+  m_CollisionDetection: 3
