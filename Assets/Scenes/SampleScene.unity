@@ -1214,51 +1214,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1411169101367319896, guid: c106d78d091c52a40adff425528ed149, type: 3}
   m_PrefabInstance: {fileID: 308265503}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &276466057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 276466059}
-  - component: {fileID: 276466058}
-  m_Layer: 0
-  m_Name: MeteoriteManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &276466058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276466057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 893f8d5d1d3b4cc46b9d23e8bd424972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meteorite_prefab: {fileID: 6818452161419314078, guid: fee76e6d7ee3cd945b2740787dbcc20b, type: 3}
-  meteorite_start_pos: 75
---- !u!4 &276466059
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276466057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &284459724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1442,7 +1397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304471542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06649579, y: 3.1968288, z: 19.9}
+  m_LocalPosition: {x: 0.06649579, y: 3.1968288, z: 155.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1447014462}
@@ -1520,7 +1475,7 @@ Transform:
   - {fileID: 2032179146}
   - {fileID: 2051620804}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &308265503
 PrefabInstance:
@@ -3379,6 +3334,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: EnableMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: Setteing.Speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: Setteing.Rotate
+      value: 270
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c106d78d091c52a40adff425528ed149, type: 3}
 --- !u!4 &938507399 stripped
@@ -3856,7 +3823,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1039096670 stripped
 Transform:
@@ -5397,6 +5364,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 304471543}
     m_Modifications:
+    - target: {fileID: -7406486429139455620, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1411169101367319896, guid: c106d78d091c52a40adff425528ed149, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5456,6 +5427,26 @@ PrefabInstance:
     - target: {fileID: 1792057162964518882, guid: c106d78d091c52a40adff425528ed149, type: 3}
       propertyPath: m_Name
       value: jyaga_MeteoPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: EnableMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: EnableShadow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: Setteing.Speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: Setteing.Rotate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305220613288796110, guid: c106d78d091c52a40adff425528ed149, type: 3}
+      propertyPath: Setteing.UseAlpha
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c106d78d091c52a40adff425528ed149, type: 3}
@@ -7033,7 +7024,7 @@ Transform:
   - {fileID: 1150495281}
   - {fileID: 1702904291}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2022572779
 PrefabInstance:

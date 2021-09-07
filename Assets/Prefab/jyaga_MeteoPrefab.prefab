@@ -97,8 +97,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1411169101367319896}
-  - component: {fileID: 8309880070715299776}
   - component: {fileID: -7406486429139455620}
+  - component: {fileID: 2305220613288796110}
   - component: {fileID: 7779518913952311931}
   m_Layer: 7
   m_Name: jyaga_MeteoPrefab
@@ -126,18 +126,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 78.1, y: -704.33, z: 558.86}
---- !u!114 &8309880070715299776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792057162964518882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &-7406486429139455620
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -152,6 +140,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 9a0012d3f9ce23c4e84da5fe5af3264f, type: 3}
+--- !u!114 &2305220613288796110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792057162964518882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableMove: 0
+  Setteing:
+    Rotate: 0
+    Speed: 0
 --- !u!54 &7779518913952311931
 Rigidbody:
   m_ObjectHideFlags: 0

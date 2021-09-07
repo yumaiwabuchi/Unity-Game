@@ -267,8 +267,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7055934680166840189}
-  - component: {fileID: 5551952497570539799}
   - component: {fileID: -9027464249588072956}
+  - component: {fileID: 4938943623255921353}
   - component: {fileID: 5392105100504615749}
   m_Layer: 7
   m_Name: satu_MeteoPrefab
@@ -296,18 +296,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 157, z: 0}
---- !u!114 &5551952497570539799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7683254874125135303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &-9027464249588072956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -322,6 +310,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 6a7318f7bfc373c4a968a94b6ad18043, type: 3}
+--- !u!114 &4938943623255921353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683254874125135303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableMove: 0
+  Setteing:
+    Rotate: 0
+    Speed: 0
 --- !u!54 &5392105100504615749
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -203,22 +203,14 @@ public class PlayerController : MonoBehaviour
                 meteo_add_flg = true;
                 meteo_gensoku_flg = false;
 
-                Vector3 meteo_velocity = new Vector3(0.0f, 0.0f, -meteo_add_speed);
                 GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
                 for (int i = 0; i < meteos.Length; i++)
                 {
-                    var v = meteos[i].GetComponent<Rigidbody>().velocity;
-                    v += meteo_velocity;
-
-                    if (v.z < -meteo_max_speed)
-                    {
-                        v.z = -meteo_max_speed;
-                    }
-                    meteos[i].GetComponent<Rigidbody>().velocity = v;
+                    meteos[i].GetComponent<MeteoriteController>().MeteoAcceleration(-meteo_add_speed, meteo_max_speed);
                 }
 
                 if (meteos.Length > 0)
-                    nowSpeed = meteos[0].GetComponent<Rigidbody>().velocity.z;
+                    nowSpeed = meteos[0].GetComponent<MeteoriteController>().MeteoSpeed();
             }
 
             if (meteo_add_flg)
@@ -231,10 +223,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            meteo_gensoku_flg = true;
-        }
+        //else
+        //{
+        //    meteo_gensoku_flg = true;
+        //}
 
         if (meteo_gensoku_flg)
         {
@@ -243,11 +235,16 @@ public class PlayerController : MonoBehaviour
             for (int i = 0; i < meteos.Length; i++)
             {
                 float speed = Mathf.Lerp(nowSpeed, -MeteoriteController.move_speed, gensokuTime);
-                meteos[i].GetComponent<Rigidbody>().velocity = new Vector3(0, 0, speed);
+                meteos[i].GetComponent<MeteoriteController>().MeteoSpeedUpdate(speed);
+                Debug.Log(speed);
             }
 
             if (gensokuTime >= 1.0f)
+            {
                 meteo_gensoku_flg = false;
+                gensokuTime = 0.0f;
+            }
+
         }
 
         //float d_pad_h = Input.GetAxis("D_Pad_H");
@@ -304,6 +301,8 @@ public class PlayerController : MonoBehaviour
                 this.gameObject.layer = LayerMask.NameToLayer("Invincible");
                 Invoke("StopInvincible", invincible_time);
                 meteo_hit_flg = true;
+                meteo_gensoku_flg = true;
+                nowSpeed = GameObject.FindGameObjectWithTag("Meteo Tag").GetComponent<MeteoriteController>().MeteoSpeed();
             }
         }
         //if (collision.gameObject.CompareTag("Front"))
@@ -321,7 +320,7 @@ public class PlayerController : MonoBehaviour
 
     void StopInvincible()
     {
-        this.gameObject.layer = LayerMask.NameToLayer("Default");
+        this.gameObject.layer = 0;
         meteo_hit_flg = false;
     }
 
