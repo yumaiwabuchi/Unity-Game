@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     float invincible_time = 2.0f;
 
     [SerializeField]
-    float meteo_add_max_time = 1.5f;
+    float meteo_down_time = 1.5f;
 
     //[SerializeField]
     //float player_speed = 1.0f;
@@ -230,13 +230,13 @@ public class PlayerController : MonoBehaviour
 
         if (meteo_gensoku_flg)
         {
-            gensokuTime += Time.deltaTime * meteo_add_max_time;
+            gensokuTime += Time.deltaTime * meteo_down_time;
             GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
             for (int i = 0; i < meteos.Length; i++)
             {
-                float speed = Mathf.Lerp(nowSpeed, -MeteoriteController.move_speed, gensokuTime);
+                float speed = Mathf.Lerp(nowSpeed, -MeteoriteController.move_speed / 3, gensokuTime);
                 meteos[i].GetComponent<MeteoriteController>().MeteoSpeedUpdate(speed);
-                Debug.Log(speed);
+                //Debug.Log(speed);
             }
 
             if (gensokuTime >= 1.0f)
@@ -246,6 +246,25 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+
+        //if (meteo_hit_flg) 
+        //{
+        //    float speed_down_time = 0;
+        //    speed_down_time += Time.deltaTime;
+        //    GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
+        //    for (int i = 0; i < meteos.Length; i++)
+        //    {
+        //        float speed = Mathf.Lerp(nowSpeed, -10, speed_down_time);
+        //        meteos[i].GetComponent<MeteoriteController>().MeteoSpeedUpdate(speed);
+        //        //Debug.Log(speed);
+        //    }
+
+        //    if (gensokuTime >= 1.0f)
+        //    {
+        //        meteo_hit_flg = false;
+        //        gensokuTime = 0.0f;
+        //    }
+        //}
 
         //float d_pad_h = Input.GetAxis("D_Pad_H");
         //float d_pad_v = Input.GetAxis("D_Pad_V");

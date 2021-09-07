@@ -77,8 +77,8 @@ public class MeteoriteController : MonoBehaviour
     {
         Vector3 velocity = r_body.velocity - add_speed;
         velocity.z += acceleration;
-        if (velocity.z > maxSpeed)
-            velocity.z = maxSpeed;
+        if (velocity.z < -maxSpeed)
+            velocity.z = -maxSpeed;
         r_body.velocity = velocity + add_speed;
     }
 
