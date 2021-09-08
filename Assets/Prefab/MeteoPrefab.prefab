@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35bbbdd3fec24e947842e869a6d84fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meteo_move_start_z: 50
   EnableMove: 0
   Setteing:
     Rotate: 0

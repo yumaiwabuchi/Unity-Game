@@ -8,9 +8,13 @@ public class MeteoriteController : MonoBehaviour
 
     public static float move_speed = 100.0f;
 
+    float meteo_move_start_z = 110.0f;
+
     GameObject player;
 
     Rigidbody r_body;
+
+    bool rotation_flg;
 
     public bool EnableMove = false;
     public ShadowSetteing Setteing = new ShadowSetteing();
@@ -20,12 +24,14 @@ public class MeteoriteController : MonoBehaviour
     {
         public float Rotate;
         public float Speed;
+        public float Rotation;
     }
 
     Vector3 add_speed;
     void Start()
     {
         //move_speed = 0.1f + 0.1f * Random.value;
+        rotation_flg = false;
         r_body = GetComponent<Rigidbody>();
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -37,7 +43,7 @@ public class MeteoriteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < -20.0f)
+        if (transform.position.z < -500.0f)
         {
             Destroy(gameObject);
         }
@@ -46,25 +52,35 @@ public class MeteoriteController : MonoBehaviour
     {
         if (EnableMove)
         {
-            if (transform.position.z < 50.0f)
+            if (transform.position.z < meteo_move_start_z)
             {
                 float meteo_rotate = Setteing.Rotate;
                 float meteo_speed = Setteing.Speed;
 
+                rotation_flg = true;
+
                 float r = (2 * Mathf.PI) * (meteo_rotate / 360);
                 var angles = new Vector3(Mathf.Cos(r), 0, Mathf.Sin(r));
+
+
 
                 //Vector3 velocity = meteo_rotate * new Vector3(meteo_speed * 0.1f, 0.0f, 0.0f);
 
                 add_speed = angles * meteo_speed;
-                r_body.velocity += r_body.velocity;
+                r_body.velocity += add_speed;
                 EnableMove = false;
             }
         }
 
+        if (rotation_flg)
+        {
+            if (transform.position.z < meteo_move_start_z)
+            {
+                float meteo_rotation = Setteing.Rotation;
 
-
-
+                transform.Rotate(new Vector3(0.0f, meteo_rotation, 0.0f));
+            }
+        }
     }
 
     public void MeteoSpeedUpdate(float move_speed)

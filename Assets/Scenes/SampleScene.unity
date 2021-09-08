@@ -6372,7 +6372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
       propertyPath: EnableMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
       propertyPath: Setteing.Speed
@@ -6381,6 +6381,10 @@ PrefabInstance:
     - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
       propertyPath: Setteing.Rotate
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
+      propertyPath: Setteing.Rotation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7337148411119455917, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
       propertyPath: m_RootOrder
@@ -16425,6 +16429,22 @@ PrefabInstance:
     - target: {fileID: 5977078446576985361, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
+      propertyPath: EnableMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
+      propertyPath: Setteing.Speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
+      propertyPath: Setteing.Rotate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464667613232249953, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
+      propertyPath: Setteing.Rotation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7337148411119455917, guid: b9a39ea5b2b8db64aac016b3279c18f6, type: 3}
       propertyPath: m_RootOrder
