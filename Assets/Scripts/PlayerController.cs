@@ -116,64 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             player_box.SetActive(true);
         }
-        //Vector3 force = gameObject.transform.rotation * new Vector3(0.0f, 0.0f, 5.0f);
-        //        r_body.AddForce(force);
 
-        //if (rightFlag)
-        //{
-        //    if (r_body.velocity.x < 0.0f)
-        //    {
-        //        var velocity = r_body.velocity;
-        //        velocity.x *= player_inertia;
-        //        r_body.velocity = velocity;
-        //    }
-
-        //    r_body.AddForce(player_x_speed, 0.0f, 0.0f);
-        //    //force += new Vector3(player_x_speed, 0.0f, 0.0f);
-        //    rightFlag = false;
-        //}
-
-        //if (leftFlag)
-        //{
-        //    if (r_body.velocity.x > 0.0f)
-        //    {
-        //        var velocity = r_body.velocity;
-        //        velocity.x *= player_inertia;
-        //        r_body.velocity = velocity;
-        //    }
-
-        //    r_body.AddForce(-player_x_speed, 0.0f, 0.0f);
-        //    //force += new Vector3(-player_x_speed, 0.0f, 0.0f);
-        //    leftFlag = false;
-        //}
-
-        //if (upFlag)
-        //{
-        //    if (r_body.velocity.z < 0.0f)
-        //    {
-        //        var velocity = r_body.velocity;
-        //        velocity.z *= player_inertia;
-        //        r_body.velocity = velocity;
-        //    }
-
-        //    r_body.AddForce(0.0f, 0.0f, player_x_speed);
-        //    //force += new Vector3(player_x_speed, 0.0f, 0.0f);
-        //    upFlag = false;
-        //}
-
-        //if (downFlag)
-        //{
-        //    if (r_body.velocity.z > 0.0f)
-        //    {
-        //        var velocity = r_body.velocity;
-        //        velocity.z *= player_inertia;
-        //        r_body.velocity = velocity;
-        //    }
-
-        //    r_body.AddForce(0.0f, 0.0f, -player_x_speed);
-        //    //force += new Vector3(player_x_speed, 0.0f, 0.0f);
-        //    downFlag = false;
-        //}
 
         if (r_body.velocity.magnitude > player_max_speed)
         {
@@ -247,68 +190,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //if (meteo_hit_flg) 
-        //{
-        //    float speed_down_time = 0;
-        //    speed_down_time += Time.deltaTime;
-        //    GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
-        //    for (int i = 0; i < meteos.Length; i++)
-        //    {
-        //        float speed = Mathf.Lerp(nowSpeed, -10, speed_down_time);
-        //        meteos[i].GetComponent<MeteoriteController>().MeteoSpeedUpdate(speed);
-        //        //Debug.Log(speed);
-        //    }
 
-        //    if (gensokuTime >= 1.0f)
-        //    {
-        //        meteo_hit_flg = false;
-        //        gensokuTime = 0.0f;
-        //    }
-        //}
-
-        //float d_pad_h = Input.GetAxis("D_Pad_H");
-        //float d_pad_v = Input.GetAxis("D_Pad_V");
-        //float l_stick_h = Input.GetAxis("L_Stick_H");
-        //float l_stick_v = Input.GetAxis("L_Stick_V");
-
-        //if (!right_side_flg)
-        //{
-        //    if (Input.GetKey(KeyCode.D) || d_pad_h > 0 || l_stick_h > 0)
-        //    {
-        //        rightFlag = true;
-        //        //            transform.Rotate(0, 50 * Time.deltaTime, 0);
-        //    }
-        //}
-
-        //if (!left_side_flg)
-        //{
-        //    if (Input.GetKey(KeyCode.A) || d_pad_h < 0 || l_stick_h < 0)
-        //    {
-        //        leftFlag = true;
-        //        //            transform.Rotate(0, -50 * Time.deltaTime, 0);
-        //    }
-        //}
-
-        //if (Input.GetKey(KeyCode.W) || d_pad_v > 0 || l_stick_v > 0)
-        //{
-        //    upFlag = true;
-        //    //            transform.Rotate(0, 50 * Time.deltaTime, 0);
-        //}
-
-        //if (Input.GetKey(KeyCode.S) || d_pad_v < 0 || l_stick_v < 0)
-        //{
-        //    downFlag = true;
-        //    //            transform.Rotate(0, 50 * Time.deltaTime, 0);
-        //}
-
-
-        //if (r_body.velocity.z >= 20.0f)
-        //    physicMaterial.bounciness = 0.2f;
-        //else
-        //    physicMaterial.bounciness = 0.4f;
-
-        //if (r_body.velocity.z > maxSpeed)
-        //    maxSpeed = r_body.velocity.z;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -368,6 +250,20 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Left Side"))
         {
             left_side_flg = true;
+        }
+
+        if (other.gameObject.CompareTag("Start"))
+        {
+            GameObject start = GameObject.Find("TimeSpriteText");
+
+            start.GetComponent<TimeController>().TimeStartUpdate(true);
+        }
+
+        if (other.gameObject.CompareTag("Goal"))
+        {
+            GameObject goal = GameObject.Find("TimeSpriteText");
+
+            goal.GetComponent<TimeController>().TimeStartUpdate(false);
         }
     }
 

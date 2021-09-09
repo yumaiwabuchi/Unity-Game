@@ -11,6 +11,8 @@ TagManager:
   - Left Side
   - Right Side
   - Meteo Tag
+  - Start
+  - Goal
   layers:
   - Default
   - TransparentFX
