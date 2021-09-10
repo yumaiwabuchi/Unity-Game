@@ -10,8 +10,8 @@ public class UIController : MonoBehaviour
     float player_pos_z;
     float goal_pos_z;
 
-    float player_UI_pos_x = -1175.0f;
-    float player_UI_goal_pos = -634.0f;
+    float player_UI_pos_x = -588.3f;
+    float player_UI_goal_pos = -212.6f;
 
     float player_start_pos;
 

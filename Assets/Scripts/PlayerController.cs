@@ -147,10 +147,13 @@ public class PlayerController : MonoBehaviour
                 meteo_gensoku_flg = false;
 
                 GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
+                GameObject goal = GameObject.FindGameObjectWithTag("Goal");
                 for (int i = 0; i < meteos.Length; i++)
                 {
                     meteos[i].GetComponent<MeteoriteController>().MeteoAcceleration(-meteo_add_speed, meteo_max_speed);
                 }
+
+                goal.GetComponent<GoalController>().MeteoAcceleration(-meteo_add_speed, meteo_max_speed);
 
                 if (meteos.Length > 0)
                     nowSpeed = meteos[0].GetComponent<MeteoriteController>().MeteoSpeed();
@@ -175,12 +178,17 @@ public class PlayerController : MonoBehaviour
         {
             gensokuTime += Time.deltaTime * meteo_down_time;
             GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
+            GameObject goal = GameObject.FindGameObjectWithTag("Goal");
+
             for (int i = 0; i < meteos.Length; i++)
             {
                 float speed = Mathf.Lerp(nowSpeed, -MeteoriteController.move_speed / 3, gensokuTime);
                 meteos[i].GetComponent<MeteoriteController>().MeteoSpeedUpdate(speed);
                 //Debug.Log(speed);
             }
+
+            float goal_speed = Mathf.Lerp(nowSpeed, -GoalController.move_speed / 3, gensokuTime);
+            goal.GetComponent<GoalController>().MeteoSpeedUpdate(goal_speed);
 
             if (gensokuTime >= 1.0f)
             {
