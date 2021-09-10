@@ -6,7 +6,7 @@ public class StartController : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static float move_speed = 100.0f;
+    public static float move_speed = 50.0f;
 
     float meteo_move_start_z = 110.0f;
 
