@@ -70,6 +70,25 @@ public class PlayerController : MonoBehaviour
     bool meteo_hit_flg;
     bool meteo_active;
 
+    float rotate_y;
+    float rotate_z;
+    bool rotate_flg;
+
+    public GameObject fast_star;
+    public GameObject slow_star;
+
+    bool star_flg;
+
+    public GameObject spark;
+
+    bool spa_flg;
+    float spa_time;
+
+    public AudioClip sound_hit;
+    bool sound_hit_flg;
+
+    AudioSource audio_source;
+
 
     void Start()
     {
@@ -81,12 +100,13 @@ public class PlayerController : MonoBehaviour
         right_side_flg = false;
         left_side_flg = false;
         meteo_add_flg = false;
+        spa_flg = false;
 
         r_body = GetComponent<Rigidbody>();
 
         player_hit_box = GetComponent<Collider>();
 
-        
+        audio_source=GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -137,7 +157,62 @@ public class PlayerController : MonoBehaviour
         velocity.y = 0.0f;
         velocity.z = l_stick_v * Mathf.Sqrt(1.0f - 0.5f * l_stick_h * l_stick_h);
 
+        if (l_stick_h > 0)
+        {
+            rotate_flg = false;
+            rotate_y -= 0.5f;
+            rotate_z -= 0.5f;
+        }
+        else if (l_stick_h < 0)
+        {
+            rotate_flg = false;
+            rotate_y += 0.5f;
+            rotate_z += 0.5f;
+        }
+
+        if (rotate_y > 35.0f)
+            rotate_y = 35.0f;
+
+        if (rotate_z > 35.0f)
+            rotate_z = 35.0f;
+
+        if (rotate_y < -35.0f)
+            rotate_y = -35.0f;
+
+        if (rotate_z < -35.0f)
+            rotate_z = -35.0f;
+
+        if (l_stick_h == 0)
+        {
+            rotate_flg = true;
+        }
+
+        if (rotate_flg)
+        {
+            rotate_y = Mathf.MoveTowards(rotate_y, 0, 0.5f);
+            rotate_z = Mathf.MoveTowards(rotate_z, 0, 0.5f);
+        }
+
+        transform.rotation = Quaternion.Euler(35.67f, rotate_y, rotate_z);
+
+        if (star_flg)
+        {
+            fast_star.SetActive(true);
+            slow_star.SetActive(false);
+
+        }
+        else
+        {
+            fast_star.SetActive(false);
+            slow_star.SetActive(true);
+        }
+
         r_body.velocity = velocity * player_speed;
+
+        if (sound_hit_flg)
+        {
+            audio_source.PlayOneShot(sound_hit);
+        }
 
         if (!meteo_hit_flg)
         {
@@ -145,6 +220,7 @@ public class PlayerController : MonoBehaviour
             {
                 meteo_add_flg = true;
                 meteo_gensoku_flg = false;
+                star_flg = true;
 
                 GameObject[] meteos = GameObject.FindGameObjectsWithTag("Meteo Tag");
                 GameObject goal = GameObject.FindGameObjectWithTag("Goal");
@@ -165,6 +241,7 @@ public class PlayerController : MonoBehaviour
                 {
                     meteo_add_flg = false;
                     meteo_gensoku_flg = true;
+                    star_flg = false;
                     gensokuTime = 0.0f;
                 }
             }
@@ -198,7 +275,21 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        if (spa_flg)
+        {
+            spark.SetActive(true);
+            spa_time += Time.deltaTime;
 
+            if(spa_time > 1.5f)
+            {
+                spa_flg = false;
+                spa_time = 0.0f;
+            }
+        }
+        else
+        {
+            spark.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -207,6 +298,9 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Meteo Tag"))
             {
+                star_flg = false;
+                spa_flg = true;
+                sound_hit_flg = true;
                 this.gameObject.layer = LayerMask.NameToLayer("Invincible");
                 Invoke("StopInvincible", invincible_time);
                 meteo_hit_flg = true;
@@ -239,8 +333,11 @@ public class PlayerController : MonoBehaviour
         //if (maxSpeed >= 10.0f)
         //        r_body.AddForce(0.0f, 0.0f, maxSpeed * 50.0f);
         //        maxSpeed = 0.0f;
-        
 
+        if (collision.gameObject.CompareTag("Meteo Tag"))
+        {
+            sound_hit_flg = false;
+        }
     }
 
     
